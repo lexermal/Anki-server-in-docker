@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  sync_server:
+    image: anki-sync-server
+    volumes:
+      - /nfs/mounts/anki/db:/opt/ankisyncd/data
+      - /nfs/mounts/anki/data:/srv/ankisyncd
+    ports:
+      - 80:27701      
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ak.rule=Host(`your-domain.com`)
+      - traefik.http.routers.ak.tls.certresolver=le
+      - traefik.http.routers.ak.entrypoints=https
+      - traefik.http.services.ak.loadbalancer.server.port=27701
+      - traefik.http.services.ak.loadbalancer.passhostheader=true
+    networks:
+     - traefik_network
+
+
+networks:
+  traefik_network:
+    external: true    
