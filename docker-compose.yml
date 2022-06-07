@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   sync_server:
-    image: anki-sync-server
+    image: lexermal/anki-sync-server
     volumes:
       - /nfs/mounts/anki/db:/opt/ankisyncd/data
       - /nfs/mounts/anki/data:/srv/ankisyncd
