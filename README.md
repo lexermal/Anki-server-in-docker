@@ -2,7 +2,7 @@
 
 ## Setup 
 
-1. Build the container with: ```docker build . -t anki-sync-server``` 
+1. Build the container with: ```cd build && docker build . -t anki-sync-server``` 
 2. Run the container with: ```docker compose up -d```
 3. Exec into the container and execute to add a user: ./ankisyncctl.py adduser anki-admin@your-domain.com
 4. Finished. Enjoy Anki :)
